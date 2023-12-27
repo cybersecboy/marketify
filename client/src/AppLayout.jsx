@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 import NavBar from './components/NavBar'
 import Footer from './components/Footer'
+import './css/index.css'
 
 const AppLayout = () => {
     return (

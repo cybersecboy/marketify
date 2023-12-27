@@ -12,7 +12,6 @@ export const appRouter = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />,
-    errorElement: <Error />,
     children: [
       {
         path: '/',
@@ -33,7 +32,11 @@ export const appRouter = createBrowserRouter([
       {
         path: 'signup',
         element: <Signup />
-      }
+      },
+      {
+        path: '*',
+        element: <Error />
+      },
     ]
   }
 ])
