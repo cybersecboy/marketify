@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const connection = require('./database/db')
+const connectDB = require('./database/db')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 
@@ -29,7 +29,7 @@ app.use((req, res, next) => {
     next();
 });
 app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.use(morgan('dev')) // app.use(morgan('common')) at the time of production
 
@@ -39,12 +39,12 @@ app.use(morgan('dev')) // app.use(morgan('common')) at the time of production
 
 // *****************************
 
-connection(process.env.MONGODB_URL)
+connectDB(process.env.MONGODB_URL)
 
 app.listen(PORT, () => {
     console.log(`server is listening...`)
 })
 
 app.get("/", (req, res) => {
-    res.send("Welcome to Marketify Server")
+    res.status(200).send("Welcome to Marketify Server...")
 })
