@@ -14,6 +14,7 @@ const morgan = require('morgan')
 const app = express()
 dotenv.config()
 const PORT = process.env.PORT || 8000
+connectDB(process.env.MONGODB_URL)
 
 // app.use(cors())
 app.use((req, res, next) => {
@@ -38,8 +39,6 @@ app.use(morgan('dev')) // app.use(morgan('common')) at the time of production
 // app.use('/api, imported_route)
 
 // *****************************
-
-connectDB(process.env.MONGODB_URL)
 
 app.listen(PORT, () => {
     console.log(`server is listening...`)
